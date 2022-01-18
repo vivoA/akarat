@@ -1,0 +1,65 @@
+.modal-header{
+    button{
+        background: none !important;
+        border: none !important;
+        i{
+            font-size: 20px;
+        }
+    }
+}
+
+.modal-body{
+    .form-group{
+        margin-top: 15px;
+        textarea{
+            position: relative;
+            z-index: 99;
+            height: 10px;
+            min-height: 72px;
+            max-height: 240px;
+            border-radius: 9px;
+            outline: none;
+            background: transparent;
+           // border: 1px solid rgb(231, 235, 249);
+            padding: 16px;
+            resize: none;
+        }
+    }
+    .price{
+        label{
+            span{
+                color: gray;
+              //  opacity: .4;
+            }
+        }
+
+    }
+}
+
+
+.required{
+    color: red;
+    top: 7px;
+    position: relative;
+    font-size: 22px;
+}
+
+.success{
+  text-align: center;
+  padding: 20px 0;
+  i{
+      color:#82C91E;
+      font-size: 40px;
+  }
+}
+
+
+.modal-footer{
+  border-top: none !important;
+}
+
+ 
+
+::ng-deep  .ngx-select__choices{
+    text-align: right !important;
+}

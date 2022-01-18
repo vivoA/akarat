@@ -1,0 +1,63 @@
+
+<section class="reals">
+
+ 
+      <div class="search">
+          <i class="fas fa-search"></i>
+          <input type="text" [(ngModel)]="query" placeholder=" ابحث هنا  عن  #المحافظة    #العنوان  #ارض    #عقار    #شقة   #محل    #فلة      #ايجار     #بيع ">
+      </div>
+
+      
+    <div class="row">
+        <div class="col-md-6 col-lg-4" *ngFor="let real of reals | search:query; index as i">
+            <div class="card item" dir="rtl" [ngClass]="{'overlay' : !real.publish}">
+                <div class="header">
+                    <img *ngIf="real.type === 'بيع'"     src="../../../../../assets/imgs/build.jpg" alt="">
+                    <img *ngIf="real.type === 'ايجار'"   src="../../../../../assets/imgs/build2.png" alt="">
+
+                    <span *ngIf="real.type === 'بيع'"   class="type" [ngClass]="real.type ==='بيع' ? 'purple': 'blue'" > بيع </span>
+                    <span *ngIf="real.type === 'ايجار'" class="type" [ngClass]="real.type ==='بيع' ? 'purple': 'blue'" > ايجار </span>
+                         
+                                   <!-- start alert dots -->
+                                   <i class="fas fa-ellipsis-v dots" *ngIf="isUser"></i>
+                                   <nav *ngIf=isUser class="navbar navbar-expand-lg navbar-light bg-light" dir="rtl">
+                                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                           <ul class="navbar-nav mr-auto">
+                                               <li class="nav-item dropdown">
+                                                   <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                   
+                                                   </a>
+                                                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                      
+                                                       <a class="dropdown-item" (click)="delete(real.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" > حذف </a>
+                                                   </div>
+                                               </li>
+                                           </ul>
+                                       </div>
+                                   </nav>
+                               <!-- end alert dots -->
+
+                    <span class="price" [ngClass]="real.type ==='بيع' ? 'purple': 'blue'"> {{real.price}}  ج</span>
+                </div>
+                
+                <div class="content">
+                    <p> {{real.description.length > 280 ? (real.description | slice:0:280)+"..." : real.description}} </p>
+                </div>
+                <div class="footer d-flex justify-content-between">
+                    <p dir="ltr" class="call"> {{real.phone }}<i class="fas fa-phone"></i></p>
+                    <p class="location"> <i class="fas fa-map-marker-alt"></i> {{real.citizen}} </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="empty" style="margin-top: 20px;">
+            <p class="text-center" *ngIf="(!reals || reals.length == 0 || (reals | search:query).length === 0)"> لم يتم العثور علي نتيجه بحث</p>
+        </div>
+    </div>
+</section>
+
+
+<confirm-modal
+           (confirm)="btnContent === 'قبول' ?  accetpReal() : deleteReal()"
+           [modalContent]="modalContent"
+           [btnContent]="btnContent"></confirm-modal>

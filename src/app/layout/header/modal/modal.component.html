@@ -1,0 +1,91 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header" dir="rtl">
+      <h4 class="modal-title" id="modal-basic-title"> اضافة اعلان </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+      </button>
+    </div>
+    <div class="modal-body" dir="rtl" *ngIf="!success">
+        <form [formGroup]="form" (submit)="onSubmit()" dir="rtl">
+            <div class="form-group" class="is-invalid">
+                <label class="form-label"> بيع ام ايجار <small class="required" *ngIf="submited && f.type.errors"> * </small> </label>
+                <ngx-select
+                  placeholder="اختر من القائمة ...."
+                  [items]="types"
+                  optionValueField="id"
+                  optionTextField="text"
+                  (select)="doSelect($event)"
+                  noResultsFound="No manager found"
+                  formControlName="type"
+                  name="type">
+                </ngx-select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">  نوع العقار <small class="required" *ngIf="submited && f.realType.errors"> * </small> </label>
+                <ngx-select
+                  placeholder="اختر من القائمة ...."
+                  [items]="realType"
+                  optionValueField="id"
+                  optionTextField="text"
+                  (select)="doSelect($event)"
+                  noResultsFound="No manager found"
+                  formControlName="realType"
+                  [ngClass]="{'is-invalid': submited && f.realType.errors}"
+                  name="realType">
+                </ngx-select>
+            </div>
+            <br>
+
+            <div class="form-group" class="is-invalid">
+                <label class="form-label"> المحافظة  <small class="required" *ngIf="submited && f.citizen.errors"> * </small> </label>
+                <ngx-select
+                  placeholder="اختر من القائمة ...."
+                  [items]="citizen"
+                  optionValueField="id"
+                  optionTextField="text"
+                  (select)="doSelect($event)"
+                  noResultsFound="No manager found"
+                  formControlName="citizen"
+                  name="citizen">
+                </ngx-select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">  الوصف <small class="required" *ngIf="submited && f.description.errors"> * </small></label>
+                <textarea
+                    autosize
+                    dir="auto"
+                    rows="1"
+                    [maxRows]="4"
+                    name="content"
+                    formControlName="description"
+                    class="form-control"
+                    #contentInput
+                    (keydown.enter)="contentInput.value ==='' ? $event.preventDefault():''">
+                </textarea>            
+            </div>
+
+            <div class="form-group price">
+                <label class="form-label"> السعر بالجنية المصري <span> (اختياري )</span>  </label>
+                <input type="number" class="form-control" formControlName="price" >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label"> رقم التواصل <small class="required" *ngIf="submited && f.phone.errors"> * </small> </label>
+                <input type="number" class="form-control"
+                       formControlName="phone">
+            </div>
+
+        </form>
+    </div>
+    <div class="success" *ngIf="success">
+        <p> تم اضافة الاعلان بنجاح وفي انتظار المراجعة</p>
+        <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="!success" type="button" class="btn btn-outline-primary w-25" (click)="onSubmit()"> ارسال </button>
+      <button *ngIf="success"  type="button" class="btn btn-outline-danger w-25"  (click)="close()"> اغلاق </button>
+      <button *ngIf="success"  type="button" class="btn btn-outline-success"  (click)="addAnother()"> اضافة اعلان اخر </button>
+    </div>
+</ng-template>

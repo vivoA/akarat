@@ -1,0 +1,110 @@
+@import "../../../assets/css/utils/variables.scss";
+
+.login-container{
+    height: 100vh;
+    background: url('../../../assets/imgs/login-bg.jpg');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .login-form{
+        position: relative;
+        z-index: 1;
+        height: auto !important;
+        .outer{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transform: rotate(5deg);
+            background: #f6fafc;
+            border-radius: 20px;
+            box-shadow: 0 15px 48px 0 rgba(0, 0, 0, 0.05);
+            opacity: 0.6;
+        }
+        .inner{
+            padding: 40px;
+            background: $white_color;
+            border-radius: 20px;
+            box-shadow: 0 15px 48px 0 rgba(0, 0, 0, 0.05);
+        }
+        .welcome-msg{
+            text-align: center;
+            margin-bottom: 40px;
+            h1{
+                // font-size: 31px;
+                font-size: clamp(1.5rem, 2.5vw, 1.9rem);
+                color: $resolution_blue_color;
+                font-weight: 700;
+                margin-top: 8px;
+            }
+            span{
+                font-size: 14px;
+                color: $perano_color;
+            }
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .input-with-icon{
+                position: relative;
+                i{
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 15px;
+                    font-size: 24px;
+                    color: $resolution_blue_color;
+
+                }
+                input{
+                    padding: 14px 14px 14px 44px;
+                    color: $resolution_blue_color;
+                    &:focus::placeholder{
+                        color: transparent;
+                    }
+                }
+            }
+            input, button{
+                border-radius: 8px;
+                padding: 14px;
+                width: 100%;
+                border: none !important;
+                outline: none !important;
+            }
+            
+            .form-group{
+                width: 100%;
+                margin-bottom: 24px;
+                input{
+                    border: solid 1px #ebeef3 !important;
+                    background-color: #f7f9fc;
+                }
+            }
+
+            button{
+                background-color: $deep_sky_blue_color;
+                color: $white_color;
+                font-weight: bold;
+                &:hover{
+                    background: #29b1f0;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .login-container .login-form .inner {
+      padding: 40px 15px ;
+    }
+}
+
+.login-container .col-10{
+    flex: none !important;
+}

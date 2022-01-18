@@ -1,0 +1,51 @@
+
+<section class="reals">      
+    <div class="row">
+        <div class="col-md-6 col-lg-4" *ngFor="let real of reals; index as i">
+            <div class="card item" dir="rtl" [ngClass]="{'overlay' : real.publish}">
+                <div class="header">
+                    <img *ngIf="real.data.type === 'بيع'"     src="../../../../../assets/imgs/build.jpg" alt="">
+                    <img *ngIf="real.data.type === 'ايجار'"   src="../../../../../assets/imgs/build2.png" alt="">
+
+                    <span *ngIf="real.data.type === 'بيع'"   class="type" [ngClass]="real.data.type ==='بيع' ? 'purple': 'blue'" > بيع </span>
+                    <span *ngIf="real.data.type === 'ايجار'" class="type" [ngClass]="real.data.type ==='بيع' ? 'purple': 'blue'" > ايجار </span>
+                         
+                    <!-- start alert dots -->
+                        <i class="fas fa-ellipsis-v dots" ></i>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light" dir="rtl">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" (click)="accept(real.data.id)"  data-bs-toggle="modal" data-bs-target="#exampleModal" > قبول </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" (click)="delete(real.data.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" > حذف </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    <!-- end alert dots -->
+                    <span class="price" [ngClass]="real.data.type ==='بيع' ? 'purple': 'blue'"> {{real.data.price}}  ج</span>
+                </div>
+                
+                <div class="content">
+                    <p> {{real.data.description.length > 280 ? (real.data.description | slice:0:280)+"..." : real.data.description}} </p>
+                </div>
+                <div class="footer d-flex justify-content-between">
+                    <p dir="ltr" class="call"> {{real.data.phone }}<i class="fas fa-phone"></i></p>
+                    <p class="location"> <i class="fas fa-map-marker-alt"></i> {{real.data.citizen}} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<confirm-modal
+           (confirm)="btnContent === 'قبول' ?  accetpReal() : deleteReal()"
+           [modalContent]="modalContent"
+           [btnContent]="btnContent"></confirm-modal>

@@ -1,0 +1,160 @@
+
+
+.reals{
+    height: 5000px;
+    margin-top: 40px;
+    @media(min-width:992px){
+        margin-top: 50px;
+    }
+
+    .search{
+        position: relative;
+        i{
+            position: absolute;
+            right: 10px;
+            color: #999;
+            font-size: 22px;
+            top: 20px;
+            
+        }
+        input{
+            width: 100%;
+            direction: rtl;
+            border:none;
+            border:1px solid  #99999959;
+    
+            padding: 17px 40px 17px 17px;
+            border-radius: 20px;
+            outline:none;
+            background: #99999908;
+          //  opacity: .5;
+        }
+    }
+    .item{
+        margin-top: 30px;
+        border-radius: 12px;
+        //overflow-y: hidden;
+        height: 450px;
+        position: relative;
+        .dots{
+            position: absolute;
+            top: 14px;
+            font-size: 19px;
+            color: #fff;
+            font-size: 25p;
+            right: 5px;
+        }
+        .header{
+            height: 220px;
+            position: relative;
+            border-top-right-radius: 12px;
+            border-top-left-radius: 12px;
+           // overflow: hidden;
+            .navbar{
+                width: 0;
+                position: absolute;
+                top:0;
+                right: -45px;
+                z-index: 9999;
+                .dropdown-menu{
+                    text-align: right !important;
+                }
+            }
+            img{
+                height: 100%;
+                width: 100%;
+                border-top-right-radius: 12px;
+                border-top-left-radius: 12px;
+                //overflow: hidden;
+            }
+            .type{
+                position: absolute;
+                padding: 5px 29px;
+                right: 20px;
+                top: 8px;
+               // background: #978cf2;
+                border-radius: 5px;
+                border: 1px solid #FFF;
+                font-weight: bold;
+                color: #ffffff;
+            }
+            .blue{
+                background: #1aa5de;
+            }
+            .purple{
+                background: #978cf2;
+            }
+            .price{
+                position: absolute;
+                padding: 5px 29px;
+                left: 20px;
+                top: 8px;
+                //background: #978cf2;
+                border-radius: 5px;
+                border: 1px solid #ffffff;
+                font-weight: bold;
+                color: #ffffff;
+            }
+        }
+        .content{
+            padding:15px;
+            p{
+                height: 32px;
+            }
+        }
+        .footer{
+            padding:15px;
+            position: relative;
+            bottom: -100px;
+            .call{
+                i{
+                    color: #5e47ec;
+                }
+            }
+            .location{
+                position: absolute;
+                left: 10px;
+                i{
+                    color:#82C91E;
+                }
+            }
+        }
+    }
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+    opacity: 0 !important;
+}
+
+
+.hide{
+    display: none ;
+}
+.show{
+    display: block;
+}
+
+.overlay{
+   &::after{
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    content: "في انتظار المراجعة";
+    /* display: block; */
+    position: absolute;
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+    align-items: center;
+    padding: 17px;
+    justify-content: center;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #999;
+    z-index: 88;
+   }
+}
