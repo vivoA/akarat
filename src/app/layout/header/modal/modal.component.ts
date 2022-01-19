@@ -16,7 +16,7 @@ export class ModalComponent implements OnInit {
   success:boolean=false
   public citizen:any=[]
   public types: string[] = ['ايجار' , 'بيع'];
-  public realType: string[] = ['ارض زراعية', 'ارض عقار' , 'شقة', 'فلة', 'محل',
+  public realType: string[] = ['ارض زراعية', 'ارض عقار' , 'منزل', 'شقة', 'فلة', 'محل',
                                 'مزرعة', 'مصنع', 'ورشة', 'عمارة', 'شالية', 'روف', 'غرفة', 'قصر',];
   constructor(private fb:FormBuilder,
               private realsService:RealsService,
