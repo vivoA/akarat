@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/bikia",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
