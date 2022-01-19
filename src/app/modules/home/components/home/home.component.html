@@ -7,8 +7,9 @@
           <input type="text" [(ngModel)]="query" placeholder=" ابحث هنا  عن  #المحافظة    #العنوان  #ارض    #عقار    #شقة   #محل    #فلة      #ايجار     #بيع ">
       </div>
 
+
       
-    <div class="row">
+    <div class="row" dir="rtl">
         <div class="col-md-6 col-lg-4" *ngFor="let real of reals | search:query; index as i">
             <div class="card item" dir="rtl" [ngClass]="{'overlay' : !real.publish}">
                 <div class="header">

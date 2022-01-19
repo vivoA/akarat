@@ -33,6 +33,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  
+
   accept(realId:any){
     this.realId=realId
     this.modalContent="هل انت متاكد من الموافقة؟"
