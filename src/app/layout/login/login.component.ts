@@ -44,8 +44,10 @@ export class LoginComponent implements OnInit {
       this.loginSer.signin((this.loginForm.value).username, (this.loginForm.value).password).then( res =>{
         console.log(res);
         this.router.navigate(['/dash-board'])
+        this.toaster.success("تم تسجيل الدخول بنجاح")
       }).catch(err =>{
         console.log(err);
+        this.toaster.error('اسم المستخدم او كلمة السر غير صحيح')
         
       })
   }

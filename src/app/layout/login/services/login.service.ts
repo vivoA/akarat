@@ -14,5 +14,8 @@ export class LoginService {
     return this.authSer.signInWithEmailAndPassword(mail,pass)
   }
 
+  forgetPass(mail:any){
+    return this.authSer.sendPasswordResetEmail(mail)
+  }
 
 }
